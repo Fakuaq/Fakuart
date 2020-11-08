@@ -1,0 +1,3 @@
+displayName = Fakuart
+author = Fakuart
+version = 0.1
