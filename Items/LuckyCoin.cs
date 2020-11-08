@@ -21,8 +21,12 @@ namespace Fakuart.Items
         }
         public override void HoldItem(Player player)
         {
-            player.noFallDmg = true;
+            player.noFallDmg = true; 
         }
-
+        public override bool OnPickup(Player player)
+        {
+            Main.PlaySound(SoundID.Coins, -1, -1, 1); // coin pickup sound
+            return true;
+        }
     }
 }
