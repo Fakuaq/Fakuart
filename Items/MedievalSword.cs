@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
+using Fakuart.Projectiles;
 
 namespace Fakuart.Items
 {
@@ -16,19 +17,19 @@ namespace Fakuart.Items
 		
 		public override void SetDefaults()
 		{
-			item.damage = 12;
+			item.damage = 15;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.useTime = 25;
+			item.useAnimation = 25;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 10000;
 			item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shoot = 1;
+			item.shoot = mod.ProjectileType("WoodenArrowClone");
 			item.shootSpeed = 8f;
 		}
 
@@ -57,7 +58,7 @@ namespace Fakuart.Items
 				heading *= new Vector2(speedX, speedY).Length();
 				speedX = heading.X;
 				speedY = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
-				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage * 1, knockBack, player.whoAmI, 0f, ceilingLimit);
+				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type,(int) (damage * 0.5f), knockBack, player.whoAmI, 0f, ceilingLimit);
 			}
 			return false;
 		}
@@ -66,9 +67,11 @@ namespace Fakuart.Items
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.WoodenSword, 1);
-			recipe.AddIngredient(ItemID.WoodenArrow, 5);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ItemID.GoldBar, 5);
+            recipe.AddIngredient(ItemID.IronBar, 10);
+			recipe.AddIngredient(ItemID.Ruby, 1);
+			recipe.AddIngredient(ItemID.WoodenArrow, 25);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
