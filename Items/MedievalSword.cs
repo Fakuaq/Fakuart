@@ -4,6 +4,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Fakuart.Projectiles;
+using Fakuart.Items.Armor;
 
 namespace Fakuart.Items
 {
@@ -12,17 +13,25 @@ namespace Fakuart.Items
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("TutorialSword"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("Uztaisa prikolu kad hitto kaadam");
+			Tooltip.SetDefault("Rains down arrows from the sky");
 		}
-		
+
+		public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
+		{
+			if (player.armor[0].type == ModContent.ItemType<MedievalHelmet>())
+			{
+				mult *= 1.2f;
+			}
+		}
+
 		public override void SetDefaults()
 		{
-			item.damage = 15;
+			item.damage = 13;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 25;
-			item.useAnimation = 25;
+			item.useTime = 26;
+			item.useAnimation = 26;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 10000;
@@ -58,7 +67,7 @@ namespace Fakuart.Items
 				heading *= new Vector2(speedX, speedY).Length();
 				speedX = heading.X;
 				speedY = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
-				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type,(int) (damage * 0.5f), knockBack, player.whoAmI, 0f, ceilingLimit);
+				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type,(int) (damage * 0.4f), knockBack, player.whoAmI, 0f, ceilingLimit);
 			}
 			return false;
 		}

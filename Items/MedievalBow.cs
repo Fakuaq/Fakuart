@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Fakuart.Projectiles;
+using Fakuart.Items.Armor;
 
 namespace Fakuart.Items
 {
@@ -15,6 +16,14 @@ namespace Fakuart.Items
         {
             DisplayName.SetDefault("Medieval Bow");
             Tooltip.SetDefault("40% chance not to consume ammo \n Shoots twice");
+        }
+
+        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
+        {
+            if (player.armor[0].type == ModContent.ItemType<MedievalHelmet>())
+            {
+                mult *= 1.2f;
+            }
         }
 
         public override void SetDefaults()
@@ -31,7 +40,7 @@ namespace Fakuart.Items
             item.rare = 2;
             item.useAnimation = 14;
             item.useTime = 7;
-            item.reuseDelay = 30;
+            item.reuseDelay = 31;
             item.UseSound = SoundID.Item5;
             item.noMelee = true;
             item.shoot = mod.ProjectileType("WoodenArrowClone");
@@ -39,7 +48,6 @@ namespace Fakuart.Items
             item.shootSpeed = 8f;
             item.autoReuse = false;
         }
-
         public override bool ConsumeAmmo(Player player)
         {
             return Main.rand.NextFloat() >= .40f;
