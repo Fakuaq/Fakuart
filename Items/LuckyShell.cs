@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 
 namespace Fakuart.Items
 {
-    public class LuckyCoin : ModItem
+    public class LuckyShell : ModItem
     {
         public override void SetStaticDefaults()
         {
-           DisplayName.SetDefault("Lucky coin");
+           DisplayName.SetDefault("Lucky Shell");
         }
         public override void SetDefaults()
         {
@@ -17,16 +17,10 @@ namespace Fakuart.Items
             item.rare = ItemRarityID.Yellow;
             item.value = Item.sellPrice(gold: 10);
             item.holdStyle = 1;
-            //item.useAnimation = 10;
         }
         public override void HoldItem(Player player)
         {
-            player.noFallDmg = true; 
-        }
-        public override bool OnPickup(Player player)
-        {
-            Main.PlaySound(SoundID.Coins, -1, -1, 1); // coin pickup sound
-            return true;
+            player.noFallDmg = true;
         }
     }
 }

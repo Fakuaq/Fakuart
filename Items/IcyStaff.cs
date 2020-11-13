@@ -48,8 +48,9 @@ namespace Fakuart.Items
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LeadBar, 10);
-            recipe.AddIngredient(ItemID.Sapphire, 5);
-            recipe.AddIngredient(ItemID.IceBlock, 30);
+            recipe.AddIngredient(ItemID.Sapphire, 3);
+            recipe.AddIngredient(ItemID.IceBlock, 50);
+            recipe.AddIngredient(ItemID.BorealWood, 25);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
