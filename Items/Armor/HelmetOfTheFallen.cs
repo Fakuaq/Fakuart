@@ -8,12 +8,12 @@ using Fakuart.Items;
 namespace Fakuart.Items.Armor
 {
 	[AutoloadEquip(EquipType.Head)]
-	public class MedievalHelmet : ModItem
+	public class HelmetOfTheFallen : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
 			// DisplayName.SetDefault("TutorialSword"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("Increases all Medieval item damage by 20%");
+			Tooltip.SetDefault("Increases the damage of all medieval items by 20%");
 		}
 
 		public override void SetDefaults()
@@ -28,9 +28,8 @@ namespace Fakuart.Items.Armor
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Sapphire, 5);
-			recipe.AddIngredient(ItemID.IronBar, 10);
-			recipe.AddIngredient(ItemID.GoldBar, 10);
+			recipe.AddIngredient(ItemID.IronBar, 8);
+			recipe.AddIngredient(ItemID.DemoniteBar, 12);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

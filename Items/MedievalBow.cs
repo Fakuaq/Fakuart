@@ -15,14 +15,18 @@ namespace Fakuart.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Medieval Bow");
-            Tooltip.SetDefault("40% chance not to consume ammo \n Shoots twice");
+            Tooltip.SetDefault("40% chance not to consume ammo\nShoots twice");
         }
 
         public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
         {
-            if (player.armor[0].type == ModContent.ItemType<MedievalHelmet>())
+            if (player.armor[0].type == ModContent.ItemType<HelmetOfTheFallen>())
             {
                 mult *= 1.2f;
+            }
+            if (player.armor[2].type == ModContent.ItemType<BardsBoots>())
+            {
+                mult *= 1.1f;
             }
         }
 
